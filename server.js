@@ -25,24 +25,8 @@ app.get("/", (req, res) => {
   res.sendFile("views/index.html", { root: __dirname });
 });
 
-// create a new route for GET /api with callback controllers.api.index
-app.post('/', controllers.users.login);
-// app.post('/signup', controllers.users.create)
-
-app.get('/api', controllers.api.index);
-app.get('/api/users', controllers.users.index);
-app.get('/api/users/:user_id', controllers.users.show);
-app.get('/api/users/:user_id/posts', controllers.usersPosts.index);
-
-app.post('/api/users', controllers.users.create);
-app.post('/api/users/:user_id/posts', controllers.usersPosts.create);
-
-app.put('/api/users/:id', controllers.users.update);
-app.put('/api/users/:user_id/posts/:post_id', controllers.usersPosts.update);
-
-app.delete('/api/users/:user_id', controllers.users.destroy);
-app.delete('/api/users/:user_id/posts/:post_id', controllers.usersPosts.destroy);
-
+app.get('/api/posts', controllers.posts.index);;
+app.post('/api/posts', controllers.posts.create);
 /**********
  * SERVER *
 **********/

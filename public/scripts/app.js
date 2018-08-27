@@ -3,6 +3,20 @@ var book_endpoint = "http://localhost:3000/api/users/"
 let signedIn;
 
 $(document).ready( function () {
+///////////
+
+$('#postForm').on('submit', function(event){
+  event.preventDefault();
+  console.log('add-post clicked!');
+  var formData = $(this).serialize();
+  console.log(formData);//user id//
+    $.post(`/api/posts`, formData, function(post) {
+      $('#results').html('');
+      initMap();
+    })
+    // reset form input values after formData has been captured
+    $(this).trigger("reset");
+});
 
 /////////////MAP////////
 initMap();
